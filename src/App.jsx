@@ -1,34 +1,47 @@
-import { useState } from "react";
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
+
 import Header from "./components/Header";
-import FoodList from "./components/FoodList";
-import Cart from "./components/Cart";
+import Home from "./pages/Home";
+import Cart from "./pages/Cart";
+
+import {
+  BookingProvider
+} from "./context/BookingContext";
+
+import "./styles/style.css";
 
 function App() {
 
-  const foods = [
-    { id: 1, name: "Pizza", price: 250 },
-    { id: 2, name: "Burger", price: 150 },
-    { id: 3, name: "Pasta", price: 200 },
-    { id: 4, name: "Sandwich", price: 100 }
-  ];
-
-  const [cartItems, setCartItems] = useState([]);
-
-  function addToCart(food) {
-    setCartItems([...cartItems, food]);
-  }
-
-  function removeFromCart(index) {
-    const updatedCart = cartItems.filter((_, i) => i !== index);
-    setCartItems(updatedCart);
-  }
-
   return (
-    <div>
-      <Header cartCount={cartItems.length} />
-      <FoodList foods={foods} addToCart={addToCart} />
-      <Cart cartItems={cartItems} removeFromCart={removeFromCart} />
-    </div>
+
+    <BookingProvider>
+
+      <BrowserRouter>
+
+        <Header />
+
+        <Routes>
+
+          <Route
+            path="/"
+            element={<Home />}
+          />
+
+          <Route
+            path="/cart"
+            element={<Cart />}
+          />
+
+        </Routes>
+
+      </BrowserRouter>
+
+    </BookingProvider>
+
   );
 }
 

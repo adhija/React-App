@@ -1,10 +1,32 @@
-function Header({ cartCount }) {
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { BookingContext } from "../context/BookingContext";
+import "../styles/style.css";
+
+const Header = () => {
+
+  const { bookings } =
+    useContext(BookingContext);
+
   return (
-    <div style={{ background: "#ff4d4d", color: "white", padding: "15px" }}>
-      <h2>Food Delivery</h2>
-      <p>Cart Items: {cartCount}</p>
-    </div>
+    <header className="navbar">
+
+      <div className="logo">
+        🎬 MovieZone
+      </div>
+
+      <nav>
+
+        <Link to="/">Home</Link>
+
+        <Link to="/cart" className="cart-btn">
+          🛒 Cart ({bookings.length})
+        </Link>
+
+      </nav>
+
+    </header>
   );
-}
+};
 
 export default Header;

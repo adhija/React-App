@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://github.com/adhija/React-App.git",
+  "homepage": "https://github.com/adhija/exp3.git",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -14,7 +14,8 @@
   },
   "dependencies": {
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.13.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
